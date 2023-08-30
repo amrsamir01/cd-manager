@@ -9,6 +9,7 @@ import {
   CardMedia,
   IconButton,
   Typography,
+  colors,
 } from "@mui/material";
 import "../../../App.css";
 
@@ -19,7 +20,7 @@ interface Props {
   imgPath: string;
 }
 
-function CDCard({ heading, price, stock, imgPath }: Props) {
+function createCard({ heading, price, stock, imgPath }: Props) {
   return (
     <>
       <Card sx={{ width: 500, padding: 2 }}>
@@ -60,4 +61,4 @@ function CDCard({ heading, price, stock, imgPath }: Props) {
   );
 }
 
-export default CDCard;
+export default createCard;
