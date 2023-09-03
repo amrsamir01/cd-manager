@@ -20,6 +20,8 @@ function FileDrop() {
     setDragIsOver(false);
   };
 
+  
+
   return (
     <Box
       onDragOver={handleDragOver}
