@@ -13,13 +13,26 @@ import {
 import "../../../App.css";
 
 interface Props {
+  id: string;
   heading: string;
-  price: string;
-  stock: string;
+  price: number;
+  stock: number;
   imgPath: string;
+  handleOpen: () => void;
+  deleteCard: (id: string) => void;
+  handleEdit:()=>void;
 }
 
-function CDCard({ heading, price, stock, imgPath }: Props) {
+function CDCard({
+  id,
+  heading,
+  price,
+  stock,
+  imgPath,
+  handleOpen,
+  deleteCard,
+  handleEdit, 
+}: Props) {
   return (
     <>
       <Card sx={{ width: 500, padding: 2 }}>
@@ -30,18 +43,21 @@ function CDCard({ heading, price, stock, imgPath }: Props) {
                 {heading}
               </Typography>
               <Typography gutterBottom variant="h6" component="div">
-                {stock}
+                {"In Stock(" + stock + ")"}
               </Typography>
               <Typography gutterBottom variant="h4" component="div">
-                {price}
+                {price + " USD"}
               </Typography>
             </CardContent>
             <CardActions>
-              <Button variant="contained" color="success">
+              <Button onClick={handleEdit} variant="contained" color="success">
                 Update
               </Button>
               <IconButton aria-label="delete" size="large" color="error">
-                <DeleteIcon fontSize="inherit" />
+                <DeleteIcon
+                  onClick={() => deleteCard(id)}
+                  fontSize="inherit"
+                />
               </IconButton>
             </CardActions>
           </Box>
