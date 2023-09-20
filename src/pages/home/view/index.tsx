@@ -51,7 +51,7 @@ export function View() {
     setOpen(false);
   };
   const onSubmit = (data: cardData) => {
-    console.log('image source',data.imageSource);
+    console.log("image source", data.imageSource);
     setCardList((prev) => [...prev, data]);
     // console.log(cardList);
     handleClose();
@@ -78,7 +78,7 @@ export function View() {
     setValue("imageSource", data.imageSource);
   };
 
-  const handleUpdate = (data:cardData) => {
+  const handleUpdate = (data: cardData) => {
     const updatedItem = {
       ...selectedCard,
       name: data.name,
@@ -88,13 +88,13 @@ export function View() {
       description: data.description,
       imageSource: data.imageSource,
     };
-    const index =  cardList.findIndex((card)=> card.id === selectedCard.id)
-    const tempArray = [...cardList]
+    const index = cardList.findIndex((card) => card.id === selectedCard.id);
+    const tempArray = [...cardList];
     if (index !== -1) {
-      tempArray[index] = updatedItem
-      setCardList(tempArray)
+      tempArray[index] = updatedItem;
+      setCardList(tempArray);
     }
-    handleClose()
+    handleClose();
   };
 
   const style = {
@@ -138,7 +138,14 @@ export function View() {
             Create CD
           </Typography>
 
-          <form onSubmit={selectedCard.id !=='' ? handleSubmit(handleUpdate): handleSubmit(onSubmit, onError)} noValidate>
+          <form
+            onSubmit={
+              selectedCard.id !== ""
+                ? handleSubmit(handleUpdate)
+                : handleSubmit(onSubmit, onError)
+            }
+            noValidate
+          >
             <Box display="flex" gap="8%">
               <Box
                 display="grid"
@@ -308,7 +315,7 @@ export function View() {
                     variant="outlined"
                     sx={{ color: "white", backgroundColor: "green", right: 10 }}
                   >
-                    {selectedCard.id !=='' ? 'Edit' :"Create"}
+                    {selectedCard.id !== "" ? "Edit" : "Create"}
                   </Button>
 
                   <Button
